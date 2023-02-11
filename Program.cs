@@ -15,6 +15,7 @@ builder.Services.AddDbContext<LibraryDBContext>(
     options => options.UseMySql( connectionString, ServerVersion.AutoDetect(connectionString))
 );
 builder.Services.AddScoped<StudentHelper>();
+builder.Services.AddScoped<BookHelper>();
 
 var app = builder.Build();
 
