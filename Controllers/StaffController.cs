@@ -1,4 +1,4 @@
-﻿using Library.Helper.Database;
+using Library.Helper.Database;
 using Library.Output;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,13 +7,13 @@ namespace Library.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentController : ControllerBase
+    public class StaffController : ControllerBase
     {
-        private StudentHelper? _studentHelper;
+        private StaffHelper? _staffHelper;
 
-        public StudentController(StudentHelper? studentHelper)
+        public StaffController(StaffHelper? staffHelper)
         {
-            _studentHelper = studentHelper;
+            _staffHelper = staffHelper;
         }
     
         [HttpGet]
@@ -22,8 +22,8 @@ namespace Library.Controllers
         {
             try
             {
-                var objJSON = new StudentOutput();
-                objJSON.payload = _studentHelper.GetAllStudents();
+                var objJSON = new StaffOutput();
+                objJSON.payload = _staffHelper.GetAllStaffs();
                 return new OkObjectResult(objJSON);
             }
             catch (Exception ex)

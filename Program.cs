@@ -1,5 +1,5 @@
 using Library;
-using Library.Helper;
+using Library.Helper.Database;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +14,9 @@ var connectionString = builder.Configuration.GetConnectionString("DBConnection")
 builder.Services.AddDbContext<LibraryDBContext>(
     options => options.UseMySql( connectionString, ServerVersion.AutoDetect(connectionString))
 );
+builder.Services.AddScoped<BookHelper>();
 builder.Services.AddScoped<StudentHelper>();
+builder.Services.AddScoped<StaffHelper>();
 
 var app = builder.Build();
 

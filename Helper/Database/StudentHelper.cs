@@ -1,7 +1,7 @@
 ﻿using Library.Output;
 using Library;
 
-namespace Library.Helper
+namespace Library.Helper.Database
 {
     public class StudentHelper
     {
