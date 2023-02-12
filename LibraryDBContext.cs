@@ -10,8 +10,6 @@ namespace Library
         public DbSet<MsBook>? MsBook { get; set; }
         public DbSet<MsStaff>? MsStaff { get; set; }
         public DbSet<MsStudent>? MsStudent { get; set; }
-        public DbSet<MsBook>? MsBook { get; set; }
-        public DbSet<MsStaff>? MsStaff { get; set; }
         public DbSet<MsCategory>? MsCategory{ get; set; }
         public DbSet<TrBorrow>? TrBorrow { get; set; }
         public DbSet<TrBorrowDetails>? TrBorrowDetails { get; set; }
