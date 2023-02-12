@@ -17,6 +17,7 @@ builder.Services.AddDbContext<LibraryDBContext>(
 builder.Services.AddScoped<BookHelper>();
 builder.Services.AddScoped<StudentHelper>();
 builder.Services.AddScoped<StaffHelper>();
+builder.Services.AddScoped<BorrowHelper>();
 
 var app = builder.Build();
 
