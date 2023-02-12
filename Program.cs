@@ -18,6 +18,7 @@ builder.Services.AddScoped<BookHelper>();
 builder.Services.AddScoped<StudentHelper>();
 builder.Services.AddScoped<StaffHelper>();
 builder.Services.AddScoped<BorrowHelper>();
+builder.Services.AddScoped<ReturnBookHelper>();
 
 var app = builder.Build();
 

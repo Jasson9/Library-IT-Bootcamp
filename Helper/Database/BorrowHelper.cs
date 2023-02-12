@@ -71,6 +71,14 @@ namespace Library.Helper.Database
                     return returnValue;
                 }
 
+                var staff = dBContext?.MsStaff?.Where(x => x.staffId == data.staffId).FirstOrDefault();
+                if(staff == null)
+                {
+                    returnValue.message = "Invalid Staff Id";
+                    returnValue.status = 400;
+                    return returnValue;
+                }
+
                 var borrowid = (int.Parse(dBContext?.TrBorrow?.OrderBy(x => x.borrowId).LastOrDefault()?.borrowId) + 1).ToString().PadLeft(5, '0');
                 var newborrow = new TrBorrow
                 {
@@ -79,7 +87,7 @@ namespace Library.Helper.Database
                     staffId = data.staffId,
                     studentId = data.studentId
                 };
-                Console.WriteLine(DateTime.Now);
+
                 var newborrowdetail = new TrBorrowDetails
                 {
                     borrowId = borrowid,
