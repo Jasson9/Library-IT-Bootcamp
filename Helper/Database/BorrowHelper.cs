@@ -35,16 +35,16 @@ namespace Library.Helper.Database
                     return returnValue;
                 }
 
-                if (student.isBorrowing)
+                if (student.isBlacklisted)
                 {
-                    returnValue.message = "student is currently borrowing a book";
+                    returnValue.message = "student is blacklisted";
                     returnValue.status = 400;
                     return returnValue;
                 }
 
-                if (student.isBlacklisted)
+                if (student.isBorrowing)
                 {
-                    returnValue.message = "student is blacklisted";
+                    returnValue.message = "student is currently borrowing a book";
                     returnValue.status = 400;
                     return returnValue;
                 }
