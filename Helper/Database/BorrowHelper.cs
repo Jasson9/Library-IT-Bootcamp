@@ -1,7 +1,6 @@
 ﻿using Library.Output;
 using Library.Helper.Request;
 using Library.Model;
-using MySqlConnector;
 
 namespace Library.Helper.Database
 {
@@ -81,25 +80,20 @@ namespace Library.Helper.Database
                     studentId = data.studentId
                 };
                 Console.WriteLine(DateTime.Now);
-                MySqlDateTime date;
-                var datetime = dBContext?.TrBorrowDetails.FirstOrDefault().borrowDate;
-                Console.WriteLine(datetime);
-                //DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                //var newborrowdetail = new TrBorrowDetails
-                //{
-                //    borrowId = borrowid,
-                //    borrowDate = ,
-                //    borrowDetailId = (int.Parse(dBContext?.TrBorrowDetails?.OrderBy(x => x.borrowDetailId).LastOrDefault()?.borrowDetailId) + 1).ToString().PadLeft(5, '0'),
-                //    isLost = false,
-                //    isReturn = false,
-                //    //returnDate = DateTime.Now,
-                //    //lostDate = DateTime.Now
-                //};
+                var newborrowdetail = new TrBorrowDetails
+                {
+                    borrowId = borrowid,
+                    borrowDate = DateTime.Now,
+                    returnType = false,
+                    borrowDetailId = (int.Parse(dBContext?.TrBorrowDetails?.OrderBy(x => x.borrowDetailId).LastOrDefault()?.borrowDetailId) + 1).ToString().PadLeft(5, '0'),
+                    isLost = false,
+                    isReturn = false
+                };
                 book.isAvailable = false;
                 student.isBorrowing = true;
                 dBContext?.TrBorrow?.Add(newborrow);
-                //dBContext?.TrBorrowDetails?.Add(newborrowdetail);
-                //dBContext?.SaveChanges();
+                dBContext?.TrBorrowDetails?.Add(newborrowdetail);
+                dBContext?.SaveChanges();
 
             }
             catch (Exception ex)
