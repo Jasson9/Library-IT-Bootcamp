@@ -42,7 +42,7 @@ namespace Library.Helper.Database
             try
             {
                 var books = dBContext?.MsBook?.ToList();
-                books = books?.Where(book => (book.categoryId + book.bookId).Contains(data.keyword) || book.title.Contains(data.keyword) || book.author.Contains(data.keyword) || book.publisher.Contains(data.keyword)).ToList();
+                books = books?.Where(book => (book.categoryId + book.bookId).ToLower().Contains(data.keyword.ToLower()) || book.title.ToLower().Contains(data.keyword.ToLower()) || book.author.ToLower().Contains(data.keyword.ToLower()) || book.publisher.ToLower().Contains(data.keyword.ToLower())).ToList();
                 books = books?.Where(book => book.isLost == false && book.isAvailable == true).ToList();
                 if (books.Count == 0)
                 {
